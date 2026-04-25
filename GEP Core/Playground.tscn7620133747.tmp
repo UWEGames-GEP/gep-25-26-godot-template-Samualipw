@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ngecyo0pmaed"]
+[gd_scene load_steps=12 format=3 uid="uid://ngecyo0pmaed"]
 
 [ext_resource type="Sky" uid="uid://cbbdl23q60wak" path="res://addons/ThirdPersonTemplate/Environments/SkyBox.res" id="1_rfwro"]
 [ext_resource type="Material" uid="uid://c1u020xb37y6n" path="res://addons/ThirdPersonTemplate/Environments/Materials/Blue.material" id="2_wyl2q"]
@@ -8,12 +8,7 @@
 [ext_resource type="Material" uid="uid://cpk3jtowelhgh" path="res://addons/ThirdPersonTemplate/Environments/Materials/PingkGrid.material" id="6_vn1us"]
 [ext_resource type="Material" uid="uid://bquocw2a8n271" path="res://addons/ThirdPersonTemplate/Environments/Materials/GreyGrid.material" id="7_x40f1"]
 [ext_resource type="PackedScene" uid="uid://c75s2m6eic1vo" path="res://addons/ThirdPersonTemplate/Character/Nodes/PlayerTemplate.tscn" id="8_0iswe"]
-[ext_resource type="Script" uid="uid://u4h1pkbcy1ar" path="res://Scripts/Inventory.gd" id="9_dtxi8"]
-[ext_resource type="Script" uid="uid://c27fnbir5obhd" path="res://Scripts/PlayerInventoryController.gd" id="10_sc53d"]
-[ext_resource type="PackedScene" uid="uid://bllf0vha52cbf" path="res://Scenes/InventoryPanel.tscn" id="11_x40f1"]
-[ext_resource type="Resource" uid="uid://rd3x4fygkuvk" path="res://Items/Box.tres" id="12_sc53d"]
-[ext_resource type="Resource" uid="uid://bw3wadetjgndv" path="res://Items/Tree.tres" id="12_vn1us"]
-[ext_resource type="PackedScene" uid="uid://dn1pu6wg26bxd" path="res://Scenes/WorldItem.tscn" id="13_vn1us"]
+[ext_resource type="Script" uid="uid://bp0qoqmkw0o70" path="res://Scripts/ItemPickup.gd" id="9_wyl2q"]
 
 [sub_resource type="Environment" id="Environment_qyvd4"]
 background_mode = 2
@@ -24,7 +19,10 @@ sdfgi_enabled = true
 adjustment_enabled = true
 adjustment_saturation = 1.15
 
+[sub_resource type="BoxMesh" id="BoxMesh_dtxi8"]
+
 [node name="Scene" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0815773, -1.43051e-06, 0.163605)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.892271, -0.274443, 0.358516, 2.02684e-08, 0.794054, 0.607847, -0.451501, 0.542364, -0.708511, 0, 2.76815, 9.26053)
@@ -120,26 +118,13 @@ operation = 2
 size = Vector3(22, 10, 14)
 material = ExtResource("7_x40f1")
 
-[node name="PlayerTemplate" parent="." groups=["Player"] instance=ExtResource("8_0iswe")]
+[node name="PlayerTemplate" parent="." instance=ExtResource("8_0iswe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.8399)
 
-[node name="P_Inventory" type="Node3D" parent="PlayerTemplate"]
-unique_name_in_owner = true
-script = ExtResource("9_dtxi8")
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.82923, -19.4244)
+script = ExtResource("9_wyl2q")
 
-[node name="Inven Controller" type="Node3D" parent="PlayerTemplate"]
-process_mode = 3
-script = ExtResource("10_sc53d")
-
-[node name="WorldItem" parent="." instance=ExtResource("13_vn1us")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.79515, 1.46845, -13.935)
-item_data = ExtResource("12_vn1us")
-
-[node name="WorldItem2" parent="." instance=ExtResource("13_vn1us")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.61907, 1.87516, -17.4563)
-item_data = ExtResource("12_sc53d")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="InventoryPanel" parent="CanvasLayer" instance=ExtResource("11_x40f1")]
-visible = false
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.35992, -5.7741, 0)
+mesh = SubResource("BoxMesh_dtxi8")

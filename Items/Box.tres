@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="MB_Item" load_steps=3 format=3 uid="uid://rd3x4fygkuvk"]
+
+[ext_resource type="PackedScene" uid="uid://dn1pu6wg26bxd" path="res://Scenes/WorldItem.tscn" id="1_j8d2o"]
+[ext_resource type="Script" uid="uid://bixpd0nvac8t3" path="res://Scripts/Item.gd" id="1_r30hh"]
+
+[resource]
+script = ExtResource("1_r30hh")
+item_name = "Box"
+description = "Its a box"
+rarity = 1
+value = 5.0
+scene_file = ExtResource("1_j8d2o")
+metadata/_custom_type_script = "uid://bixpd0nvac8t3"

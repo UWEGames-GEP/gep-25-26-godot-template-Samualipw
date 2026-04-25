@@ -43,6 +43,8 @@ var movement_speed = int()
 var angular_acceleration = int()
 var acceleration = int()
 
+
+
 func _ready(): # Camera based Rotation
 	direction = Vector3.BACK.rotated(Vector3.UP, $Camroot/h.global_transform.basis.get_euler().y)
 
@@ -50,8 +52,10 @@ func _input(event): # All major mouse and button input events
 	if event is InputEventMouseMotion:
 		aim_turn = -event.relative.x * 0.015 # animates player with mouse movement while aiming 
 	
+	
 	#if event.is_action_pressed("aim"): # Aim button triggers a strafe walk and camera mechanic
 		#direction = $Camroot/h.global_transform.basis.z
+
 
 func sprint_and_roll():
 ## Dodge button input with dash and interruption to basic actions
@@ -109,7 +113,8 @@ func _physics_process(delta):
 	angular_acceleration = 10
 	acceleration = 15
 
-	# Gravity mechanics and prevent slope-sliding
+	# Gravity mechanics and prevent slope-slidin
+	
 	if not is_on_floor(): 
 		vertical_velocity += Vector3.DOWN * gravity * 2 * delta
 	else: 

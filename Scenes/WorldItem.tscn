@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dn1pu6wg26bxd"]
+
+[ext_resource type="Script" uid="uid://bp0qoqmkw0o70" path="res://Scripts/ItemPickup.gd" id="1_phxcw"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3romj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s04wv"]
+
+[node name="WorldItem" type="Area3D"]
+script = ExtResource("1_phxcw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_3romj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_s04wv")

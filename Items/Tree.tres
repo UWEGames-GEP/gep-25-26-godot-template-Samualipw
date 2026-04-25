@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="MB_Item" load_steps=3 format=3 uid="uid://bw3wadetjgndv"]
+
+[ext_resource type="Script" uid="uid://bixpd0nvac8t3" path="res://Scripts/Item.gd" id="1_j7l3t"]
+[ext_resource type="PackedScene" uid="uid://dn1pu6wg26bxd" path="res://Scenes/WorldItem.tscn" id="1_puqh2"]
+
+[resource]
+script = ExtResource("1_j7l3t")
+item_name = "Tree"
+description = "A rare type of tree, it appears as a box to the human eye"
+rarity = 10
+value = 5000.0
+scene_file = ExtResource("1_puqh2")
+metadata/_custom_type_script = "uid://bixpd0nvac8t3"
